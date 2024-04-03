@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Flux vidéo de la caméra</title>
+    <style>
+      /* CSS pour afficher la vidéo en plein écran */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      /* CSS pour le bouton de capture d'écran */
+      #capture-btn {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Balise vidéo pour afficher le flux vidéo -->
+    <video id="video" autoplay></video>
+    <!-- Bouton de capture d'écran -->
+    <button id="capture-btn">Prendre une capture d'écran</button>
+    <!-- Script pour récupérer le flux vidéo et prendre une capture d'écran -->
+    <script>
+      const video = document.getElementById('video');
+      const captureBtn = document.getElementById('capture-btn');
+      // Récupère le flux vidéo de la caméra
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+          video.srcObject = stream;
+        })
+        .catch(error => {
+          console.error('Erreur : ', error);
+        });
+      // Ajoute un événement click sur le bouton de capture d'écran
+      captureBtn.addEventListener('click', () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        // Convertit le canvas en image PNG
+        const imgData = canvas.toDataURL('image/png');
+        // Ouvre l'image dans une nouvelle fenêtre
+        const newWindow = window.open();
+        newWindow.document.write(`<img src="${imgData}">`);
+      });
+    </script>
+  </body>
+</html>
+
