@@ -1,0 +1,184 @@
+/*
+/*css du header de toutes les pages*/
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1c242d;
+    left: 0px;
+    right: 0px;
+    position: fixed;
+    top: 0px;
+}
+header button {
+    border-radius: 15px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.titre{
+  margin: 25px;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: bold;
+}
+ul .onglet{
+    margin-top  : 10px;
+    padding: 10px;
+    padding-top: 10px;
+}
+ul a{
+    color: #FFF;
+    text-decoration: none;
+    padding: 10px;
+}
+ul .onglet:hover{
+    color: #FFF;
+    text-decoration: none;
+    cursor: pointer;  
+    background-color: #d2483c;
+    border-radius: 15px;
+}
+button{
+    margin: 10px;
+    width: 120px;
+    height: 30px;
+}
+button a{
+    color: #000;
+    text-decoration: none;
+}
+.fiche{
+	margin:11% 0;
+}
+#liste{
+	margin: 11% 0;
+}
+table{
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	margin: 11% 0;
+}
+td, th{
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: center;
+}
+th{
+	background-color: #1c242d;
+	color: white;
+	width: 1%;
+}
+.menu {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu .onglet {
+    margin: 0 5px;
+    overflow: hidden;
+}
+.menu-button-container {
+    display: none;
+    height: 100%;
+    width: 30px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#menu-toggle {
+    display: none;
+}
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: #fff;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+.menu-button::before {
+    content: '';
+    margin-top: -8px;
+}
+.menu-button::after {
+    content: '';
+    margin-top: 8px;
+}
+  
+#menu-toggle:checked + .menu-button-container .menu-button::before {
+    margin-top: 0px;
+    transform: rotate(405deg);
+}
+  
+#menu-toggle:checked + .menu-button-container .menu-button {
+    background: #1c242d;
+}
+  
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+    margin-top: 0px;
+    transform: rotate(-405deg);
+}
+.fiche{
+	margin:11% 0;
+}
+.liste{
+	margin:11%;
+}
+@media (max-width: 850px) {
+    .menu-button-container {
+      display: flex;
+    }
+    .menu {
+        position: absolute;
+        top: 0;
+        margin-top: 98px;
+        left: 0;
+        flex-direction: column;
+        width: 50%;
+        justify-content: center;
+        align-items: center;
+    }
+    #menu-toggle ~ .menu li {
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    #menu-toggle:checked ~ .menu li {
+        height: 2.5em;
+        padding: 0.5em;
+        transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .menu li {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        padding: 0.5em 0;
+        width: 100%;
+        color: white;
+        background-color: #1c242d;
+      }
+      ul .onglet:hover{
+        border-radius: 0px;
+    }
+    .menu{
+        margin-top: 73px;
+    }
+    .titre{
+        font-size: 15px;
+    }        
+    header{
+        width: 100%;
+    }
+    button{
+        width: 90px;
+    }
+}
